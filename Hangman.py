@@ -34,7 +34,7 @@ def hard():
     return len(word)
 
 def check(word, emptyword, user_input):
-    global misses
+    global guesses
     global Guessed_Letters
     correct = 0
     for count in range(len(word)):
@@ -44,8 +44,8 @@ def check(word, emptyword, user_input):
     if (user_input == "stop"):
         return "Game Over"
     if (correct == 0):
-        misses += 1
-        print("Number of misses: " + str(misses))
+        guesses -= 1
+        print("You have", guesses, "guesses left")
     Guessed_Letters.append(user_input)
     return emptyword
 
@@ -87,7 +87,7 @@ while (restart.lower() == "yes"):
     for count in range(len(word)):
         blankword.append('_')
     print(blankword)
-    misses = 0
+    guesses = 10
     Guessed_Letters = []
 
     # game
@@ -100,7 +100,7 @@ while (restart.lower() == "yes"):
             if (win(blankword)):
                 print("You were able to guess the word!")
                 break
-            if (misses == 10):
+            if (guesses == 0):
                 print("You lost!\nThe word is: " + str(word))
                 break
             elif (guess == "stop"):
