@@ -72,6 +72,13 @@ def invalid_input(guess):
     else:
         return False
 
+def num_input(guess):
+    try:
+        int(guess)
+        return True
+    except ValueError:
+        return False
+
 # *********MAIN**********#
 print("Let's play hangman(you can enter stop at anytime to end that round).")
 restart = "yes"
@@ -105,10 +112,15 @@ while (restart.lower() == "yes"):
     while (True):
         print('')
         guess = input('guess a letter(lowercase): ')
-        while (invalid_input(guess)) and (guess != "stop"):
+        while (invalid_input(guess)) and (guess != "stop") or (num_input(guess)):
             print("")
-            print("You can use one character for your guess")
+            if (invalid_input(guess)):
+                print("You can use one character for your guess")
+            
+            elif (num_input(guess)):
+                print("you can only use letters")
             guess = input('guess a letter(lowercase): ')
+
         if check_letter(guess,Guessed_Letters):
             print(check(word, blankword, guess))
             print("Letters used: "+str(Guessed_Letters))
