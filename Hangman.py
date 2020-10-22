@@ -142,3 +142,4 @@ while (restart.lower() == "yes"):
     print('\n')
     restart = input('do you want to play again: ')
     print('\n')
+print("Thank you for playing")
