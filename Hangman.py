@@ -56,7 +56,7 @@ def hard_word():
     word.remove('\n')
     return len(word)
 
-def check(word, emptyword, user_input):
+def check_letter(word, emptyword, user_input):
     """
     Checks to see if the letter the 
     user guessed is in the word
@@ -165,7 +165,7 @@ while (restart.lower() == "yes"):
             guess = input('guess a letter(lowercase): ')
 
         if check_guessed_letter(guess,Guessed_Letters):
-            print(check(word, blankword, guess))
+            print(check_letter(word, blankword, guess))
             print("Letters used: "+str(Guessed_Letters))
             if (win(blankword)):
                 print("You were able to guess the word!")
