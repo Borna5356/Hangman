@@ -1,3 +1,11 @@
+"""
+Author: Borna Eshraghi
+File: Sorting.py
+Descriptipn: Sorts words into 
+different test files based
+on their length
+
+"""
 word = input("Type the word you wish to put in the game(type done to finish): ")
 print('\n')
 while (word != "done"):

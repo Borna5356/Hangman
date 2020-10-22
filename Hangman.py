@@ -1,6 +1,19 @@
+"""
+Author: Borna Eshraghi
+File: Hangaman.py
+Description: Uses the random module
+and words from text files to play 
+hangman
+
+"""
 import random
 
-def easy():
+def easy_word():
+    """
+    Gets a word from the Level1Words.txt
+    and returns the length
+
+    """
     global word
     wordlibray = open('Level1Words.txt', 'r')
     for line in wordlibray:
@@ -11,7 +24,12 @@ def easy():
     word.remove('\n')
     return len(word)
 
-def medium():
+def medium_word():
+    """
+    Gets a word from the Level2Words.txt
+    and returns the length
+
+    """
     global word
     wordlibrary = open('Level2Words.txt', 'r')
     for line in wordlibrary:
@@ -22,7 +40,12 @@ def medium():
     word.remove('\n')
     return len(word)
 
-def hard():
+def hard_word():
+    """
+    Gets a word from the Level3Words.txt
+    and returns the length
+
+    """
     global word
     wordlibrary = open('Level3Words.txt', 'r')
     for line in wordlibrary:
@@ -34,6 +57,11 @@ def hard():
     return len(word)
 
 def check(word, emptyword, user_input):
+    """
+    Checks to see if the letter the 
+    user guessed is in the word
+
+    """
     global guesses
     global Guessed_Letters
     correct = 0
@@ -50,12 +78,21 @@ def check(word, emptyword, user_input):
     return emptyword
 
 def win(blankword):
+    """
+    checks to see if the word has been guessed
+    
+    """
     for count in range(len(blankword)):
         if blankword[count] == '_':
             return False
     return True
 
-def check_letter(user_input,letters_guessed):
+def check_guessed_letter(user_input,letters_guessed):
+    """
+    checks to see if the user has already 
+    guessed the inputed letter
+    
+    """
     for count in range(len(letters_guessed)):
         if (user_input == letters_guessed[count]):
             return False
@@ -73,6 +110,12 @@ def invalid_input(guess):
         return False
 
 def num_input(guess):
+    """
+    checks to make sure the 
+    guess is not a number
+    
+    
+    """
     try:
         int(guess)
         return True
@@ -88,13 +131,13 @@ while (restart.lower() == "yes"):
     difficulty = int(input("enter a difficulty level from 1-3: "))
     while (True):
         if (difficulty == 1):
-            print("The word is " + str(easy()) + " letters long.")
+            print("The word is " + str(easy_word()) + " letters long.")
             break
         elif (difficulty == 2):
-            print("The word is " + str(medium()) + " letters long.")
+            print("The word is " + str(medium_word()) + " letters long.")
             break
         elif (difficulty == 3):
-            print("The word is " + str(hard()) + " letters long.")
+            print("The word is " + str(hard_word()) + " letters long.")
             break
         else:
             difficulty = int(input("You entered an invalid level.\nEnter a difficulty level from 1-3: "))
@@ -121,7 +164,7 @@ while (restart.lower() == "yes"):
                 print("you can only use letters")
             guess = input('guess a letter(lowercase): ')
 
-        if check_letter(guess,Guessed_Letters):
+        if check_guessed_letter(guess,Guessed_Letters):
             print(check(word, blankword, guess))
             print("Letters used: "+str(Guessed_Letters))
             if (win(blankword)):
