@@ -183,6 +183,6 @@ while (restart.lower() == "yes"):
 
     #asking to restart game
     print('\n')
-    restart = input('do you want to play again: ')
+    restart = input("do you want to play again: ")
     print('\n')
 print("Thank you for playing")
