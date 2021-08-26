@@ -6,6 +6,15 @@ different test files based
 on their length
 
 """
+
+def check_file(word, filename):
+    library = open(filename,'r')
+    
+
+    return 0
+
+
+
 word = input("Type the word you wish to put in the game(type done to finish): ")
 print('\n')
 while (word != "done"):
